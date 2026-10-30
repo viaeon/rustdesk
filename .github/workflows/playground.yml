@@ -26,6 +26,11 @@ env:
   RS_PUB_KEY: "${{ secrets.RS_PUB_KEY }}"
   RENDEZVOUS_SERVER: "${{ secrets.RENDEZVOUS_SERVER }}"
   API_SERVER: "${{ secrets.API_SERVER }}"
+  # 兜底端口（客户端填的地址没带端口时才用）；留空则用 21116/21117/21118/21119
+  RENDEZVOUS_PORT: "${{ vars.RENDEZVOUS_PORT }}"
+  RELAY_PORT: "${{ vars.RELAY_PORT }}"
+  WS_RENDEZVOUS_PORT: "${{ vars.WS_RENDEZVOUS_PORT }}"
+  WS_RELAY_PORT: "${{ vars.WS_RELAY_PORT }}"
   UPLOAD_ARTIFACT: "${{ inputs.upload-artifact }}"
   SIGN_BASE_URL: "${{ secrets.SIGN_BASE_URL }}"
 

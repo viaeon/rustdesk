@@ -1891,11 +1891,18 @@ jobs:
           sudo apt-get install -y libarchive-tools libfuse2
           # set-up appimage-builder
           # https://github.com/AppImage/AppImageKit/issues/1395
-          # Ubuntu 22.04 自带 setuptools 59.6.0，而 appimage-builder 通过 setup_requires 拉取的
-          # setuptools_scm 10.x 需要 setuptools>=61，否则 egg_info 报 ignore_egg_info_in_manifest
+          # appimage-builder 的 setup.py 里 setup_requires=["setuptools_scm"] 未锁版本，
+          # 会拉到 10.x，而 Ubuntu 22.04 自带 setuptools 59.6.0，egg_info 阶段报
+          # AttributeError: ignore_egg_info_in_manifest。
+          # 预装 setuptools_scm<9 无效（setup_requires 会单独往 .eggs/ 里下载），
+          # 所以改为克隆后把 setup_requires 锁到 8.x 再本地安装。
           sudo pip3 install -U pip setuptools wheel
-          sudo pip3 install "setuptools_scm<9"
-          sudo pip3 install git+https://github.com/rustdesk-org/appimage-builder.git
+          git clone --depth=1 https://github.com/rustdesk-org/appimage-builder.git /tmp/appimage-builder
+          cd /tmp/appimage-builder
+          sed -i 's/setup_requires=\["setuptools_scm"\]/setup_requires=["setuptools_scm<9"]/' setup.py
+          # 浅克隆没有 tag，setuptools_scm 探测版本会失败，直接指定一个版本号
+          sudo SETUPTOOLS_SCM_PRETEND_VERSION=1.0.0 pip3 install .
+          cd ${{ github.workspace }}
           # run appimage-builder
           pushd appimage
           sudo appimage-builder --skip-tests --recipe ./AppImageBuilder-${{ matrix.job.arch }}.yml

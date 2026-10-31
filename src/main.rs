@@ -3,7 +3,7 @@
     windows_subsystem = "windows"
 )]
 
-use librustdesk::*;
+use remote::*;
 
 #[cfg(any(target_os = "android", target_os = "ios", feature = "flutter"))]
 fn main() {
@@ -49,7 +49,7 @@ fn main() {
         -k, --key=[KEY] ''
        -s, --server=[] 'Start server'",
     );
-    let app_name = librustdesk::common::get_app_name();
+    let app_name = remote::common::get_app_name();
     let matches = App::new(app_name.clone())
         .version(crate::VERSION)
         .author(app_name.clone())

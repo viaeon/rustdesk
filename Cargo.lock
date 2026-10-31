@@ -6526,7 +6526,7 @@ dependencies = [
 ]
 
 [[package]]
-name = "rustdesk"
+name = "remote"
 version = "1.4.2"
 dependencies = [
  "android-wakelock",

@@ -49,10 +49,11 @@ fn main() {
         -k, --key=[KEY] ''
        -s, --server=[] 'Start server'",
     );
-    let matches = App::new("rustdesk")
+    let app_name = librustdesk::common::get_app_name();
+    let matches = App::new(app_name.clone())
         .version(crate::VERSION)
-        .author("Purslane Ltd<info@rustdesk.com>")
-        .about("RustDesk command line tool")
+        .author(app_name.clone())
+        .about(format!("{} command line tool", app_name))
         .args_from_usage(&args)
         .get_matches();
     use hbb_common::{config::LocalConfig, env_logger::*};

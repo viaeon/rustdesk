@@ -1,11 +1,11 @@
 [Desktop Entry]
-Name=RustDesk
+Name=remote
 NoDisplay=true
-MimeType=x-scheme-handler/rustdesk;
-TryExec=rustdesk
-Exec=rustdesk %u
-Icon=rustdesk
+MimeType=x-scheme-handler/remote;
+TryExec=remote
+Exec=remote %u
+Icon=remote
 Terminal=false
 Type=Application
 StartupNotify=false
-StartupWMClass=rustdesk
+StartupWMClass=remote

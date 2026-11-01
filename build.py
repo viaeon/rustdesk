@@ -524,7 +524,7 @@ def main():
             system2('strip target/release/remote')
             system2('ln -s res/pacman_install && ln -s res/PKGBUILD')
             system2('HBB=`pwd` makepkg -f')
-        system2('mv rustdesk-%s-0-x86_64.pkg.tar.zst rustdesk-%s-manjaro-arch.pkg.tar.zst' % (
+        system2('mv remote-%s-0-x86_64.pkg.tar.zst remote-%s-manjaro-arch.pkg.tar.zst' % (
             version, version))
         # pacman -U ./rustdesk.pkg.tar.zst
     elif os.path.isfile('/usr/bin/yum'):

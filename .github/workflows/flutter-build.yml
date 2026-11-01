@@ -1591,8 +1591,8 @@ jobs:
           prerelease: true
           tag_name: ${{ env.TAG_NAME }}
           files: |
-            rustdesk-*.deb
-            rustdesk-*.rpm
+            remote-*.deb
+            remote-*.rpm
 
       - name: Upload deb
         uses: actions/upload-artifact@master

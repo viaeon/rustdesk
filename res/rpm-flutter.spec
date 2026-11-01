@@ -26,19 +26,19 @@ The best open-source remote desktop client software, written in Rust.
 
 mkdir -p "%{buildroot}/usr/share/remote" && cp -r ${HBB}/flutter/build/linux/x64/release/bundle/* -t "%{buildroot}/usr/share/remote"
 mkdir -p "%{buildroot}/usr/bin"
-install -Dm 644 $HBB/res/rustdesk.service -t "%{buildroot}/usr/share/remote/files"
-install -Dm 644 $HBB/res/rustdesk.desktop -t "%{buildroot}/usr/share/remote/files"
-install -Dm 644 $HBB/res/rustdesk-link.desktop -t "%{buildroot}/usr/share/remote/files"
+install -Dm 644 $HBB/res/remote.service -t "%{buildroot}/usr/share/remote/files"
+install -Dm 644 $HBB/res/remote.desktop -t "%{buildroot}/usr/share/remote/files"
+install -Dm 644 $HBB/res/remote-link.desktop -t "%{buildroot}/usr/share/remote/files"
 install -Dm 644 $HBB/res/128x128@2x.png "%{buildroot}/usr/share/icons/hicolor/256x256/apps/remote.png"
 install -Dm 644 $HBB/res/scalable.svg "%{buildroot}/usr/share/icons/hicolor/scalable/apps/remote.svg"
 
 %files
 /usr/share/remote/*
-/usr/share/remote/files/rustdesk.service
+/usr/share/remote/files/remote.service
 /usr/share/icons/hicolor/256x256/apps/remote.png
 /usr/share/icons/hicolor/scalable/apps/remote.svg
-/usr/share/remote/files/rustdesk.desktop
-/usr/share/remote/files/rustdesk-link.desktop
+/usr/share/remote/files/remote.desktop
+/usr/share/remote/files/remote-link.desktop
 
 %changelog
 # let's skip this for now
@@ -56,9 +56,9 @@ case "$1" in
 esac
 
 %post
-cp /usr/share/remote/files/rustdesk.service /etc/systemd/system/rustdesk.service
-cp /usr/share/remote/files/rustdesk.desktop /usr/share/applications/
-cp /usr/share/remote/files/rustdesk-link.desktop /usr/share/applications/
+cp /usr/share/remote/files/remote.service /etc/systemd/system/remote.service
+cp /usr/share/remote/files/remote.desktop /usr/share/applications/
+cp /usr/share/remote/files/remote-link.desktop /usr/share/applications/
 ln -sf /usr/share/remote/remote /usr/bin/remote
 systemctl daemon-reload
 systemctl enable rustdesk
@@ -71,7 +71,7 @@ case "$1" in
     # for uninstall
     systemctl stop rustdesk || true
     systemctl disable rustdesk || true
-    rm /etc/systemd/system/rustdesk.service || true
+    rm /etc/systemd/system/remote.service || true
   ;;
   1)
     # for upgrade
@@ -86,8 +86,8 @@ case "$1" in
     rmdir /usr/lib/remote || true
     rmdir /usr/local/remote || true
     rmdir /usr/share/remote || true
-    rm /usr/share/applications/rustdesk.desktop || true
-    rm /usr/share/applications/rustdesk-link.desktop || true
+    rm /usr/share/applications/remote.desktop || true
+    rm /usr/share/applications/remote-link.desktop || true
     update-desktop-database
   ;;
   1)

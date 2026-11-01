@@ -334,15 +334,15 @@ def build_flutter_deb(version, features):
     system2(
         f'cp -r {flutter_build_dir}/* tmpdeb/usr/share/remote/')
     system2(
-        'cp ../res/rustdesk.service tmpdeb/usr/share/remote/files/systemd/')
+        'cp ../res/remote.service tmpdeb/usr/share/remote/files/systemd/')
     system2(
         'cp ../res/128x128@2x.png tmpdeb/usr/share/icons/hicolor/256x256/apps/remote.png')
     system2(
         'cp ../res/scalable.svg tmpdeb/usr/share/icons/hicolor/scalable/apps/remote.svg')
     system2(
-        'cp ../res/rustdesk.desktop tmpdeb/usr/share/applications/rustdesk.desktop')
+        'cp ../res/remote.desktop tmpdeb/usr/share/applications/remote.desktop')
     system2(
-        'cp ../res/rustdesk-link.desktop tmpdeb/usr/share/applications/rustdesk-link.desktop')
+        'cp ../res/remote-link.desktop tmpdeb/usr/share/applications/remote-link.desktop')
     system2(
         'cp ../res/startwm.sh tmpdeb/etc/remote/')
     system2(
@@ -377,15 +377,15 @@ def build_deb_from_folder(version, binary_folder):
     system2(
         f'cp -r ../{binary_folder}/* tmpdeb/usr/share/remote/')
     system2(
-        'cp ../res/rustdesk.service tmpdeb/usr/share/remote/files/systemd/')
+        'cp ../res/remote.service tmpdeb/usr/share/remote/files/systemd/')
     system2(
         'cp ../res/128x128@2x.png tmpdeb/usr/share/icons/hicolor/256x256/apps/remote.png')
     system2(
         'cp ../res/scalable.svg tmpdeb/usr/share/icons/hicolor/scalable/apps/remote.svg')
     system2(
-        'cp ../res/rustdesk.desktop tmpdeb/usr/share/applications/rustdesk.desktop')
+        'cp ../res/remote.desktop tmpdeb/usr/share/applications/remote.desktop')
     system2(
-        'cp ../res/rustdesk-link.desktop tmpdeb/usr/share/applications/rustdesk-link.desktop')
+        'cp ../res/remote-link.desktop tmpdeb/usr/share/applications/remote-link.desktop')
     system2(
         "echo \"#!/bin/sh\" >> tmpdeb/usr/share/remote/files/polkit && chmod a+x tmpdeb/usr/share/remote/files/polkit")
 
@@ -606,15 +606,15 @@ def main():
                 system2('mkdir -p tmpdeb/usr/share/icons/hicolor/256x256/apps/')
                 system2('mkdir -p tmpdeb/usr/share/icons/hicolor/scalable/apps/')
                 system2(
-                    'cp res/rustdesk.service tmpdeb/usr/share/remote/files/systemd/')
+                    'cp res/remote.service tmpdeb/usr/share/remote/files/systemd/')
                 system2(
                     'cp res/128x128@2x.png tmpdeb/usr/share/icons/hicolor/256x256/apps/remote.png')
                 system2(
                     'cp res/scalable.svg tmpdeb/usr/share/icons/hicolor/scalable/apps/remote.svg')
                 system2(
-                    'cp res/rustdesk.desktop tmpdeb/usr/share/applications/rustdesk.desktop')
+                    'cp res/remote.desktop tmpdeb/usr/share/applications/remote.desktop')
                 system2(
-                    'cp res/rustdesk-link.desktop tmpdeb/usr/share/applications/rustdesk-link.desktop')
+                    'cp res/remote-link.desktop tmpdeb/usr/share/applications/remote-link.desktop')
                 os.system('mkdir -p tmpdeb/etc/remote/')
                 os.system('cp -a res/startwm.sh tmpdeb/etc/remote/')
                 os.system('mkdir -p tmpdeb/etc/X11/remote/')

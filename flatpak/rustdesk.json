@@ -1,11 +1,11 @@
 {
-  "id": "com.rustdesk.RustDesk",
+  "id": "com.viaeon.remote",
   "runtime": "org.freedesktop.Platform",
   "runtime-version": "24.08",
   "sdk": "org.freedesktop.Sdk",
   "command": "remote",
   "cleanup": ["/include", "/lib/pkgconfig", "/share/gtk-doc"],
-  "rename-desktop-file": "rustdesk.desktop",
+  "rename-desktop-file": "remote.desktop",
   "rename-icon": "remote",
   "modules": [
     "shared-modules/libappindicator/libappindicator-gtk3-12.10.json",
@@ -48,7 +48,7 @@
         },
         {
           "type": "file",
-          "path": "com.rustdesk.RustDesk.metainfo.xml"
+          "path": "com.viaeon.remote.metainfo.xml"
         }
       ]
     }

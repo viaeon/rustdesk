@@ -29,20 +29,20 @@ mkdir -p %{buildroot}/usr/share/icons/hicolor/256x256/apps/
 mkdir -p %{buildroot}/usr/share/icons/hicolor/scalable/apps/
 install -m 755 $HBB/target/release/remote %{buildroot}/usr/bin/remote
 install $HBB/libsciter-gtk.so %{buildroot}/usr/share/remote/libsciter-gtk.so
-install $HBB/res/rustdesk.service %{buildroot}/usr/share/remote/files/
+install $HBB/res/remote.service %{buildroot}/usr/share/remote/files/
 install $HBB/res/128x128@2x.png %{buildroot}/usr/share/icons/hicolor/256x256/apps/remote.png
 install $HBB/res/scalable.svg %{buildroot}/usr/share/icons/hicolor/scalable/apps/remote.svg
-install $HBB/res/rustdesk.desktop %{buildroot}/usr/share/remote/files/
-install $HBB/res/rustdesk-link.desktop %{buildroot}/usr/share/remote/files/
+install $HBB/res/remote.desktop %{buildroot}/usr/share/remote/files/
+install $HBB/res/remote-link.desktop %{buildroot}/usr/share/remote/files/
 
 %files
 /usr/bin/remote
 /usr/share/remote/libsciter-gtk.so
-/usr/share/remote/files/rustdesk.service
+/usr/share/remote/files/remote.service
 /usr/share/icons/hicolor/256x256/apps/remote.png
 /usr/share/icons/hicolor/scalable/apps/remote.svg
-/usr/share/remote/files/rustdesk.desktop
-/usr/share/remote/files/rustdesk-link.desktop
+/usr/share/remote/files/remote.desktop
+/usr/share/remote/files/remote-link.desktop
 /usr/share/remote/files/__pycache__/*
 
 %changelog
@@ -61,9 +61,9 @@ case "$1" in
 esac
 
 %post
-cp /usr/share/remote/files/rustdesk.service /etc/systemd/system/rustdesk.service
-cp /usr/share/remote/files/rustdesk.desktop /usr/share/applications/
-cp /usr/share/remote/files/rustdesk-link.desktop /usr/share/applications/
+cp /usr/share/remote/files/remote.service /etc/systemd/system/remote.service
+cp /usr/share/remote/files/remote.desktop /usr/share/applications/
+cp /usr/share/remote/files/remote-link.desktop /usr/share/applications/
 systemctl daemon-reload
 systemctl enable rustdesk
 systemctl start rustdesk
@@ -75,7 +75,7 @@ case "$1" in
     # for uninstall
     systemctl stop rustdesk || true
     systemctl disable rustdesk || true
-    rm /etc/systemd/system/rustdesk.service || true
+    rm /etc/systemd/system/remote.service || true
   ;;
   1)
     # for upgrade
@@ -86,8 +86,8 @@ esac
 case "$1" in
   0)
     # for uninstall
-    rm /usr/share/applications/rustdesk.desktop || true
-    rm /usr/share/applications/rustdesk-link.desktop || true
+    rm /usr/share/applications/remote.desktop || true
+    rm /usr/share/applications/remote-link.desktop || true
     update-desktop-database
   ;;
   1)

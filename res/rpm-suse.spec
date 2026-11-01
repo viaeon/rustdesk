@@ -1,4 +1,4 @@
-Name:       rustdesk
+Name:       remote
 Version:    1.1.9
 Release:    0
 Summary:    RPM package

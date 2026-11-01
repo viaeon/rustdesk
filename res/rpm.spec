@@ -1,9 +1,9 @@
-Name:       rustdesk
+Name:       remote
 Version:    1.4.2
 Release:    0
 Summary:    RPM package
 License:    GPL-3.0
-URL:        https://rustdesk.com
+URL:        https://viaeon.com
 Vendor:     rustdesk <info@rustdesk.com>
 Requires:   gtk3 libxcb libxdo libXfixes alsa-lib libva2 pam gstreamer1-plugins-base
 Recommends: libayatana-appindicator-gtk3

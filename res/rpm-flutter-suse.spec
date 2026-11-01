@@ -82,7 +82,7 @@ esac
 case "$1" in
   0)
     # for uninstall
-    rm /usr/bin/rustdesk || true
+    rm /usr/bin/remote || true
     rmdir /usr/lib/rustdesk || true
     rmdir /usr/local/rustdesk || true
     rmdir /usr/share/rustdesk || true

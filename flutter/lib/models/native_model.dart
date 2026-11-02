@@ -118,7 +118,7 @@ class PlatformFFI {
   Future<void> init(String appType) async {
     _appType = appType;
     final dylib = isAndroid
-        ? DynamicLibrary.open('remote.so')
+        ? DynamicLibrary.open('libremote.so')
         : isLinux
             ? DynamicLibrary.open('remote.so')
             : isWindows

@@ -9,7 +9,7 @@ import com.viaeon.remote.RdClipboardManager
 
 object FFI {
     init {
-        System.loadLibrary("rustdesk")
+        System.loadLibrary("remote")
     }
 
     external fun init(ctx: Context)
